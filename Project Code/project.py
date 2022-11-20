@@ -1,6 +1,8 @@
 import mysql.connector as sql
+import matplotlib.pyplot as plt
+import time 
 import pandas as pd
-conn=sql.connect(host='localhost',user='root',passwd='',database='grocery_shop')
+conn=sql.connect(host='localhost',user='root',passwd='atharvrastogi9',database='grocery_shop')
 if conn.is_connected():
     print('successfully connected')
 c=conn.cursor()
@@ -74,7 +76,12 @@ if choice==1:
                 print()
                 print(display)
                 print()
+
+                display = csv_cust
             
+                
+                    
+
             if cd == 2: 
                 pinput = input('Enter Name of the Customer = ')
                 qry = 'select *from customer_details where cust_name  = ''\''+(pinput)+'\';'
@@ -95,6 +102,17 @@ if choice==1:
                 print()
                 print(display)
                 print()
+
+                # display = csv_name
+
+                cho = input("Do you want to plot graph for the stock of the product. y/n : ")
+                if cho == 'y' or cho == 'Y' : 
+                    plt.pie(display["qty"], labels = display["product_name"], autopct = '%1.1f%%')
+                    plt.title('Pie Chart for the stock of various products')
+                    plt.show()
+                
+                else : 
+                    print("Not plotting :)")
             
             if cd == 2 : 
                 pinput = input('Enter Name of the product = ')
@@ -124,13 +142,32 @@ if choice==1:
                 print(display)
 
         elif choice==7:
-            print('*'*20)
-            f=open('test.txt','r')
-            data=f.read()
-            print(data)
-            
-            f.close()
-            print('*'*20)
+            print("Converting Customer DataFrame to csv")
+            time.sleep(0.5)
+            print(".", end="")
+            time.sleep(0.5)
+            print(".", end="")
+            time.sleep(0.5)
+            print(".", end="")
+            # csv_cust.to_csv('csv files/customer.csv')
+            query = 'select *from customer_details;'
+            display = pd.read_sql(query, conn)
+            display.to_csv('csv files/customer.csv')
+            print("Done")
+
+        elif choice==8:
+            print("Converting Product DataFrame to csv")
+            time.sleep(0.5)
+            print(".", end="")
+            time.sleep(0.5)
+            print(".", end="")
+            time.sleep(0.5)
+            print(".", end="")
+            # csv_cust.to_csv('csv files/customer.csv')
+            query = 'select *from product_details;'
+            display = pd.read_sql(query, conn)
+            display.to_csv('csv files/product.csv')
+            print("Done")
 
         elif choice==11:
             import matplotlib.pyplot as plt
@@ -145,7 +182,7 @@ if choice==1:
             exit()
             
     else:
-        print('wrong password, try again ')
+        print('wrong password, try again :(')
         
             
 if choice==2:
@@ -154,9 +191,6 @@ if choice==2:
 
 
 
-
+# "+str(phone_no)+",'"+(cust_name)+"',"+str(cost)+"
 # "'"+(product_name)+"',"+str(product_cost)+","+str(qty)+
 # '\''+(pinput)+'\';'
-
-
-
