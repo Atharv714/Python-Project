@@ -2,11 +2,12 @@ import mysql.connector as sql
 import matplotlib.pyplot as plt
 import time 
 import pandas as pd
-conn=sql.connect(host='localhost',user='root',passwd='atharvrastogi9',database='grocery_shop')
+conn=sql.connect(host='localhost',user='root',passwd='',database='grocery_shop')
 if conn.is_connected():
     print('successfully connected')
 c=conn.cursor()
 
+print("This Project aims to make a database manageament system for the general shop owners. It stores data of customer, product and workers, with some other extra feature")
 
 print('General Store Management System')
 print('1.login')
@@ -21,6 +22,7 @@ if choice==1:
         print('*'*21)
         print('    General Store')
         print('*'*21)
+
         print('1.Insert customer details')
         print('2.Insert product details') 
         print('3.Insert worker details')
@@ -30,8 +32,7 @@ if choice==1:
         print('7.Export Customer Data to csv')
         print('8.Export Product Data to csv')
         print('9.Export Workers Data to csv')
-        print('10.pie chart for avalibility of stock')
-        print('11.exit')
+        print('10. Exit')
 
         choice=int(input('Enter the choice : '))
         if choice==1:
@@ -59,7 +60,7 @@ if choice==1:
             worker_work=input('Enter the work = ')
             worker_age = int(input('Enter the age = '))
             worker_salary = float(input('enter the salary = '))
-            phone_no = int(input('enter the  phone number = '))
+            phone_no = int(input('enter the phone number = '))
             sql_insert = "insert into worker_details values(" "'"+(worker_name)+"'," "'"+(worker_work)+"',"+str(worker_age)+","+str(worker_salary)+","+str(phone_no)+ ")"
             c.execute(sql_insert)
             conn.commit()
@@ -76,8 +77,6 @@ if choice==1:
                 print()
                 print(display)
                 print()
-
-                display = csv_cust
             
                 
                     
@@ -128,7 +127,7 @@ if choice==1:
             print('2. Show specified worker Details')
             cd = int(input('Enter your choice : '))
             if cd == 1 : 
-                query = 'select *from product_details'
+                query = 'select *from worker_details'
                 display = pd.read_sql(query, conn)
                 print()
                 print(display)
@@ -152,7 +151,7 @@ if choice==1:
             # csv_cust.to_csv('csv files/customer.csv')
             query = 'select *from customer_details;'
             display = pd.read_sql(query, conn)
-            display.to_csv('csv files/customer.csv')
+            display.to_csv('Project Code/csv_files/customer.csv')
             print("Done")
 
         elif choice==8:
@@ -166,19 +165,25 @@ if choice==1:
             # csv_cust.to_csv('csv files/customer.csv')
             query = 'select *from product_details;'
             display = pd.read_sql(query, conn)
-            display.to_csv('csv files/product.csv')
+            display.to_csv('csv_files/product.csv')
             print("Done")
 
-        elif choice==11:
-            import matplotlib.pyplot as plt
-            items=('shoes','stationary','watch','house use','food items')
-            avalibility=[156,200,103,206,196]
-            colors=['red','yellowgreen','blue','gold','green']
-            plt.pie(avalibility,labels=items,colors=colors)
-            plt.title('avalibility of items in shop')
-            plt.show()
+        elif choice == 9 : 
 
-        elif choice==12:
+            print("Converting Product DataFrame to csv")
+            time.sleep(0.5)
+            print(".", end="")
+            time.sleep(0.5)
+            print(".", end="")
+            time.sleep(0.5)
+            print(".", end="")
+            # csv_cust.to_csv('csv files/customer.csv')
+            query = 'select *from worker_details;'
+            display = pd.read_sql(query, conn)
+            display.to_csv('csv files/workers.csv')
+            print("Done")
+
+        elif choice==10:
             exit()
             
     else:
@@ -187,9 +192,6 @@ if choice==1:
             
 if choice==2:
     exit()
-
-
-
 
 # "+str(phone_no)+",'"+(cust_name)+"',"+str(cost)+"
 # "'"+(product_name)+"',"+str(product_cost)+","+str(qty)+
