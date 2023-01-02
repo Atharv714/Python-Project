@@ -1,0 +1,40 @@
+pen                                                                              
+ballpoint pen=12
+ink pen=50
+gel pen=50
+
+classmate note=150
+classmate short note=150
+classmate packet note=180
+classmate 200pg note=50
+classmate king size=20
+
+sonata=12
+titan=15
+fastrack=20
+zolo=25
+kalanji=15
+casio=5
+bell=14
+
+adidas=17
+puma=25
+nike=24
+vectorx=50
+action=50
+tana=50
+boot=50
+
+powder=50
+oil=15
+comb=10
+mirro=25
+park avenue=50
+axe=75
+fogo=50
+pin=200
+clip=250
+fair & lovly=80
+fair& handsome=80
+
+
