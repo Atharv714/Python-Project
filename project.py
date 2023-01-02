@@ -69,12 +69,15 @@ if choice==1:
         elif choice==4:
             print('1. Show all customers details')
             print('2. Show specified Customer Details')
+            print()
             cd = int(input('Enter your choice : '))
             if cd == 1 : 
                 query = 'select *from customer_details'
                 display = pd.read_sql(query, conn)
                 print()
+                print('--'*20)
                 print(display)
+                print('--'*20)
                 print()
             
                 
@@ -84,21 +87,26 @@ if choice==1:
                 pinput = input('Enter Name of the Customer = ')
                 qry = 'select *from customer_details where cust_name  = ''\''+(pinput)+'\';'
                 # print(qry)
-                print()
                 display = pd.read_sql(qry, conn)
+                print()
+                print('--'*20)
                 print(display)
+                print('--'*20)
                 print()
                 
 
         elif choice==5:
             print('1. Show all product details')
             print('2. Show specified product Details')
+            print()
             cd = int(input('Enter your choice : '))
             if cd == 1 : 
                 query = 'select *from product_details'
                 display = pd.read_sql(query, conn)
                 print()
+                print('--'*25)
                 print(display)
+                print('--'*25)
                 print()
 
                 # display = csv_name
@@ -118,26 +126,35 @@ if choice==1:
                 # print(qry)
                 display = pd.read_sql(qry, conn)
                 print()
+                print('--'*25)
                 print(display)
+                print('--'*25)
                 print()
 
         elif choice==6:
             print('1. Show all worker details')
             print('2. Show specified worker Details')
+            print()
             cd = int(input('Enter your choice : '))
             if cd == 1 : 
-                query = 'select *from product_details'
+                query = 'select *from worker_details'
                 display = pd.read_sql(query, conn)
                 print()
+                print('--'*35)
                 print(display)
+                print('--'*35)
                 print()
             
             if cd == 2 : 
-                pinput = input('Enter Name of the product = ')
-                qry = 'select *from product_details where product_name = ''\''+(pinput)+'\';'
+                pinput = input('Enter Name of the worker = ')
+                qry = 'select *from worker_details where worker_name = ''\''+(pinput)+'\';'
                 # print(qry)
                 display = pd.read_sql(qry, conn)
+                print()
+                print('--'*35)
                 print(display)
+                print('--'*35)
+                print()
 
         elif choice==7:
             print("Converting Customer DataFrame to csv")
