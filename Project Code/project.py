@@ -15,7 +15,7 @@ print('2.exit')
 choice=int(input('enter the choice : '))
 if choice==1:
     user_name=input('enter the user name = ')
-    password=input('enter the password = ')
+    password = pwinput.pwinput(prompt ="Enter the Password : ", mask="*")
     while user_name=='' and password=='':
         print('yayyy connected successfully')   
 
