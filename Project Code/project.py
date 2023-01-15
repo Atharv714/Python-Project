@@ -2,6 +2,7 @@ import mysql.connector as sql
 import matplotlib.pyplot as plt
 import time 
 import pandas as pd
+import pwinput
 conn=sql.connect(host='localhost',user='root',passwd='',database='grocery_shop')
 if conn.is_connected():
     print('successfully connected')
